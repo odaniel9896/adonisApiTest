@@ -20,4 +20,6 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 
+
+//NÃO É NECESSÁRIO FAZER O IMPORT DA ROTA
 Route.get('/', 'HomeController.index')

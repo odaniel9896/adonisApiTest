@@ -18,8 +18,18 @@
 |
 */
 
-import Route from '@ioc:Adonis/Core/Route'
-
+import Route from "@ioc:Adonis/Core/Route";
 
 //NÃO É NECESSÁRIO FAZER O IMPORT DA ROTA
-Route.get('/', 'HomeController.index')
+
+Route.group(() => {
+
+  Route.group(() => {
+    Route.get("/todo", "TodosController.index");
+    Route.post("/todo", "TodosController.store");
+    Route.patch("/todo/:id", "TodosController.update");
+  }).middleware("auth");
+
+  Route.post('/register', 'AuthController.store');
+  Route.post('/login', 'AuthController.login');
+}).prefix("api");
